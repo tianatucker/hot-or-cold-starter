@@ -14,6 +14,15 @@ function handleInstructionsModal() {
   	});
 }
 
+/*function newGame() {
+	// when users click on the element with
+	// `.js-what` class, we'll fade in
+	// the instructions modal
+	$('.js-new-game').click(function() {
+		$('.game')[0].reset();
+		startGame();
+	});
+}*/
 
 // `$(document).ready` lets you specify a
 // function that should execute when all the
@@ -24,6 +33,7 @@ $(document).ready(function(){
 	handleInstructionsModal();
 	//When a new game starts, a secret number between
 	//1 and 100 is generated
+function newGame() {
 	var startGame = Math.floor((Math.random() * 100)+1);
 	console.log(startGame);
 
@@ -62,10 +72,15 @@ $(document).ready(function(){
 		//Track number of user guesses in 'span #count'
 		var guessNum = $('.guessBox li').length;
 		$('.count').text(guessNum);
-
 		} else {
 			alert("Please enter number between 1 and 100.");
 		}
+	})
+	};
+	newGame();
+	//New Game button functionality
+	$('.js-new-game').click(function() {
+		newGame();
 	});
 });
 
