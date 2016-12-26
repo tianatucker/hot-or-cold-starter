@@ -14,16 +14,6 @@ function handleInstructionsModal() {
   	});
 }
 
-/*function newGame() {
-	// when users click on the element with
-	// `.js-what` class, we'll fade in
-	// the instructions modal
-	$('.js-new-game').click(function() {
-		$('.game')[0].reset();
-		startGame();
-	});
-}*/
-
 // `$(document).ready` lets you specify a
 // function that should execute when all the
 // resources required by your web page have loaded.
@@ -33,11 +23,21 @@ $(document).ready(function(){
 	handleInstructionsModal();
 	//When a new game starts, a secret number between
 	//1 and 100 is generated
-function newGame() {
-	var startGame = Math.floor((Math.random() * 100)+1);
-	console.log(startGame);
-
-	$('#js-guess-submit').click(function(){
+  var startGame
+  var winningNumber
+  function newGame() {
+    winningNumber = startGame = Math.floor((Math.random() * 100)+1);
+    // RESET input value in text box
+    document.getElementById("myForm").reset();
+    // RESET guess count
+    $('span').text( "0" );
+    //RESET all guesses in teal box
+    $( '.guessBox' ).empty();
+    //RESET Guess feedback in red box
+    $('.js-feedback').text( "Make your Guess!" );
+    console.log(startGame,'startGAME');
+  };
+  $('#js-guess-submit').click(function(){
 		console.log($('#js-guess-submit'));
 		var enteredNum = parseInt($('#js-user-guess').val());
 		var numberDiff = Math.abs(startGame - enteredNum);
@@ -76,29 +76,9 @@ function newGame() {
 			alert("Please enter number between 1 and 100.");
 		}
 	})
-	};
 	newGame();
-	//New Game button functionality
+	//New Game button functional
 	$('.js-new-game').click(function() {
 		newGame();
 	});
 });
-
-//'.js-new-game' class will create a new game
-
-//When a new game starts, a secret number between
-//1 and 100 is generated
-
-//Add guess feedback to 'h2 #feedback'
-//If guess is more than 50 away from number it's Ice Cold
-//If guess is between 30 - 50 away from the number it's Cold
-//If guess is between 20 - 30 away from number it's Warm
-//If guess is between 10 - 20 away from number it's Hot
-//If guess is between 1 - 10 away from number it's Very Hot
-
-//Track number of user guesses in 'span #count'
-
-//Record each guess as 'li' in 'ul #guessList'
-
-//If the input is not a number between 1 and 100
-//tell user the entry is invalid.
