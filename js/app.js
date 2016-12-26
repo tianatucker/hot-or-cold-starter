@@ -77,7 +77,7 @@ $(document).ready(function(){
 		}
 	})
 	newGame();
-	//New Game button functional
+	//New Game button functionality
 	$('.js-new-game').click(function() {
 		newGame();
 	});
